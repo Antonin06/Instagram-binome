@@ -1,0 +1,26 @@
+
+
+
+
+.sign_in{
+
+    position: absolute;
+    width: 300px;
+    top:40%;
+    left:40%;
+    border: solid 1px black;
+    padding: 20px;
+    -webkit-box-shadow: 5px 5px 9px 0px #000000; 
+    box-shadow: 5px 5px 9px 0px #000000;
+  }
+  
+  .sign_in_logo{
+    position: absolute;
+    width: 300px;
+    top:30%;
+    left:40%;
+    background-color:#1C6EA4;
+    border: solid 1px black;
+    -webkit-box-shadow: 5px 5px 9px 0px #000000; 
+    box-shadow: 5px 5px 9px 0px #000000;
+  }

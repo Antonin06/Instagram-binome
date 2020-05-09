@@ -28,13 +28,13 @@ $insertUserName->execute([
   <script src="https://kit.fontawesome.com/a58b6117a4.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/lucas.css">
   <title>Instagram</title>
 </head>
 <body>
   <body>
 
-    <img class="sign_in_logo" src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt=""> -->
+    <img class="sign_in_logo" src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt="">
     <form class="sign_in" action="sign_in.php" method="POST" >
       <div class="form-group">
         <div class="input-group flex-nowrap">
