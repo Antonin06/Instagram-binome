@@ -4,17 +4,15 @@
 include 'connexion.php';
 
 
-$username = htmlspecialchars($_POST['username']);
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-$insertUserName = $bdd->prepare("INSERT INTO sign_in(username, password)
+
+$insertUserName = $bdd->prepare("SELECT FROM users(username, password)
 VALUES (?, ?)");
 
-$insertUserName->execute([
 
-  $username,
-  $password
-]);
+
+header( 'location: profil.html');
+
 ?>
 
 
@@ -31,26 +29,28 @@ $insertUserName->execute([
   <link rel="stylesheet" href="./css/lucas.css">
   <title>Instagram</title>
 </head>
-<body>
   <body>
+  
 
-    <img class="sign_in_logo" src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt="">
-    <form class="sign_in" action="sign_in.php" method="POST" >
-      <div class="form-group">
-        <div class="input-group flex-nowrap">
+    
+    <form class="sign_in  shadow mx-auto" action="sign_in.php" method="POST" >
+    <img class="sign_in_logo " src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt="">
+      <div class="form-group mt-3">
+        <div class="input-group flex-nowrap pt-5">
           <div class="input-group-prepend">
             <span class="input-group-text" id="addon-wrapping">@</span>
           </div>
-          <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+          <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required>
         </div>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
       </div>
-      <button type="submit" class="btn btn-success">Login</button>
+      <button type="submit" class="btn btn-success pb-1">Login</button><br/>
+      <strong>don't have an account? <a href="sign_up.php">Sign up</a></strong>
     </form>
-
+  
 
   </body>
-  </html>
+</html>
