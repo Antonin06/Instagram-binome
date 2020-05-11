@@ -19,7 +19,7 @@ background-color: #EFEFEF;
 .story1 {
   position:absolute;
   top:50%;
-  left:10%;
+  left:13%;
   transform:translate(-50%,-50%);
   width:100px;
   height:100px;
@@ -46,7 +46,7 @@ background-color: #EFEFEF;
 .story2 {
   position:absolute;
   top:50%;
-  left:25%;
+  left:28%;
   transform:translate(-50%,-50%);
   width:100px;
   height:100px;
@@ -73,7 +73,7 @@ background-color: #EFEFEF;
 .story3 {
   position:absolute;
   top:50%;
-  left:40%;
+  left:43%;
   transform:translate(-50%,-50%);
   width:100px;
   height:100px;
@@ -100,7 +100,7 @@ background-color: #EFEFEF;
 .story4 {
   position:absolute;
   top:50%;
-  left:55%;
+  left:58%;
   transform:translate(-50%,-50%);
   width:100px;
   height:100px;
@@ -127,7 +127,7 @@ background-color: #EFEFEF;
 .story5 {
   position:absolute;
   top:50%;
-  left:70%;
+  left:73%;
   transform:translate(-50%,-50%);
   width:100px;
   height:100px;
@@ -154,7 +154,7 @@ background-color: #EFEFEF;
 .story6 {
   position:absolute;
   top:50%;
-  left:85%;
+  left:88%;
   transform:translate(-50%,-50%);
   width:100px;
   height:100px;
@@ -185,4 +185,3 @@ background-color: #EFEFEF;
     transform:rotate(200deg);
   }
 }
-
