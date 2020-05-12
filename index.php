@@ -15,7 +15,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white p-2">
       <div class="container p-1">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <img src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt=""></a>
           <img src="./images/designed_by_no_bg.png" width="140" height="68" class="mx-auto" alt="">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,19 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link mr-2" href="index.html"><i class="fas fa-home fa-2x"></i></a>
-              <a class="nav-item nav-link mr-2" href="#"><i class="fas fa-heart fa-2x"></i></a>
-              <a class="nav-item nav-link mr-2" href="profil.html"><i class="fas fa-user-circle fa-2x"></i></a>
+              <a class="nav-item nav-link mr-2" href="index.php"><i class="fas fa-home fa-2x"></i></a>
+              <div class="dropdown show">
+                <a class="nav-item nav-link mr-2 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-heart fa-2x"></i></a>
+                <div class="dropdown-menu"  aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">a aimé votre photo<button type="button" class="btn btn-primary">S'abonné</button></a>
+                  <a class="dropdown-item" href="#">a commencé à vous suivre</a>
+                  <a class="dropdown-item" href="#">sugsestion d'abonné</a>
+                  <a class="dropdown-item" href="#">cool !</a>
+                  <a class="dropdown-item" href="#">j'aime</a>
+                  <a class="dropdown-item" href="#">autre personne</a>
+                </div>
+              </div>
+              <a class="nav-item nav-link mr-2" href="profil.php"><i class="fas fa-user-circle fa-2x"></i></a>
             </div>
           </div>
         </div>

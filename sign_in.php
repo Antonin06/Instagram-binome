@@ -11,7 +11,7 @@ VALUES (?, ?)");
 
 
 
-header( 'location: profil.html');
+header( 'location: profil.php');
 
 ?>
 
