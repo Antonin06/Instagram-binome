@@ -10,6 +10,8 @@ session_start();
 // ]);
 //
 // $user = $getUsers->fetch();
+// C:\laragon\www\Instagram-binome\data\..\upload\code.jpg
+
 
 $description = htmlspecialchars($_POST["description"]);
 $localisation = htmlspecialchars($_POST['localisation']);
@@ -18,9 +20,15 @@ $url = htmlspecialchars($_POST["url_user"]);
 // Image CODE
 if(isset($_POST['submit'])){
 
-  $images= $_FILES['file']['img_profil'];
-  $target_dir = "../upload/";
-  $target_file = $target_dir . basename($_FILES["file"]["img_profil"]);
+  $image = $_FILES['img_profil'];
+
+  // Voici à quoi ressemblera le chemin sur Windows.
+  // C:\laragon\www\Instagram-binome\data\..\upload\code.jpg
+  // Voici à quoi ressemblera le chemin sur Linux.
+  // /var/www/instagram-binome/data/../upload/code.jpg
+  $target_dir = __DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."upload".DIRECTORY_SEPARATOR;
+
+  $target_file = $target_dir . $image['name'];
 
   // Select file type
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -28,35 +36,36 @@ if(isset($_POST['submit'])){
   // Valid file extensions
   $extensions_arr = array("jpg","jpeg","png","gif");
 
+  // var_dump($imageFileType);
+  // var_dump($target_file);
+  // exit;
+
   // Check extension
   if( in_array($imageFileType,$extensions_arr) ){
 
-    //Insert record
-    $insertNewUserData = $bdd->prepare("INSERT INTO user_data(img_profil)
-    VALUES (?)");
-    $insertNewUserData->execute([
-      $images,
-    ]);
-
-
     // Upload file
-    move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$images);
+    move_uploaded_file($image['tmp_name'], $target_file);
 
   }
+  else {
+    header('location: ../sign_up2.php?error=image');
+  }
+
+  $insertNewUserData = $bdd->prepare("INSERT INTO user_data(description, localisation, url_user, user_id, img_profil)
+  VALUES (?, ?, ?, ?, ?)");
+
+  $insertNewUserData->execute([
+    $description,
+    $localisation,
+    $url,
+    $_SESSION['user_id'],
+    "/upload/".$image['name']
+
+  ]);
+
 
 }
 // Image CODE
-
-
-$insertNewUserData = $bdd->prepare("INSERT INTO user_data(description, localisation, url_user, user_id)
-VALUES (?, ?, ?, ?)");
-
-$insertNewUserData->execute([
-  $description,
-  $localisation,
-  $url,
-  $_SESSION['user_id']
-]);
 
 
 header('location: ../profil.php');

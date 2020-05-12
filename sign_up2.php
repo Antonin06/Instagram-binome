@@ -29,12 +29,17 @@ session_start();
           <div class="form-group">
             <label for="img_profil">Choisir une photo de profil</label>
             <input type="file" class="form-control-file"
-            accept="image/jpeg" name="img_profil">
+            accept="image/*" name="img_profil">
+            <?php
+                if(isset($_GET['error']) && $_GET['error'] === 'image'){  ?>
+                  <p>Le format de votre image n'est pas bon!</p>
+              <?php  }
+             ?>
           </div>
 
           <div class="form-group mt-4">
             <label for="description">Description</label>
-            <textarea class="form-control mb-2 " rows="3" name="description" placeholder="Faites une breve description de votre profil."></textarea>
+            <textarea class="form-control mb-2" rows="3" name="description" placeholder="Faites une breve description de votre profil."></textarea>
           </div>
 
           <div class="form-group mt-4">
@@ -47,7 +52,7 @@ session_start();
             <input type="url" class="form-control w-75" name="url_user" placeholder="instagram.com">
           </div>
 
-          <button class="btn btn-success" type="submit">Continuer</button>
+          <button class="btn btn-success" type="submit" name="submit">Continuer</button>
         </form>
 
       </div>
