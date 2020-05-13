@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 
@@ -42,6 +43,8 @@ if (isset($_POST['login']))
 
 
 
+=======
+>>>>>>> 416f069c3af1dd8938d04f8d5a1d150e4c39e762
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,10 +58,9 @@ if (isset($_POST['login']))
   <title>Instagram</title>
 </head>
   <body>
-  
 
-    
-    <form class="sign_in  shadow mx-auto" action="sign_in.php" method="POST" >
+
+    <form class="sign_in shadow mx-auto" action="./data/sign_in_login.php" method="POST" >
     <img class="sign_in_logo " src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt="">
       <div class="form-group mt-3">
         <div class="input-group flex-nowrap pt-5">
@@ -75,6 +77,7 @@ if (isset($_POST['login']))
       <button type="submit" name="login" class="btn btn-success pb-1">Login</button><br/>
       <strong>don't have an account? <a href="sign_up.php">Sign up</a></strong>
     </form>
+<<<<<<< HEAD
     <?php if(isset($erreur)){
       echo '<font color="red">'.$erreur;
     };
@@ -83,6 +86,9 @@ if (isset($_POST['login']))
     
   ?>
   
+=======
+
+>>>>>>> 416f069c3af1dd8938d04f8d5a1d150e4c39e762
 
   </body>
 </html>

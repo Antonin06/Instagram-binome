@@ -5,13 +5,17 @@ include 'connexion.php';
 
 session_start();
 
-$user_data = $bdd->query("SELECT * FROM user_data ORDER BY user_data.user_id DESC");
+
+$userSelect = $bdd->prepare("SELECT * FROM users WHERE username = ?");
+$userSelect->execute([$_SESSION['username']]);
+$user = $userSelect->fetch();
+
+$user_data = $bdd->prepare("SELECT * FROM user_data WHERE user_id = ?");
+$user_data->execute([$user['id']]);
 $data = $user_data->fetch();
 
-$user = $bdd->query("SELECT * FROM users ORDER BY users.id DESC");
-$username = $user->fetch();
-
-$request = $bdd->query("SELECT * FROM images ORDER BY images.created_at DESC");
+$request = $bdd->prepare("SELECT * FROM images WHERE user_id = ? ORDER BY images.created_at DESC");
+$request->execute([$user['id']]);
 $images = $request->fetchAll();
 
 ?>
@@ -73,7 +77,7 @@ $images = $request->fetchAll();
 
         <div class="col-6 pl-5">
           <h2><?php
-          echo ($username['username']);
+          echo ($user['username']);
           ?></h2>
           <ul class="list-inline">
             <li class="list-inline-item"><strong>59</strong> publications</li>
@@ -88,7 +92,7 @@ $images = $request->fetchAll();
             echo ($data['localisation']);
             ?></li>
             <li><i class="far fa-envelope"></i> <?php
-            echo ($username['mail']);
+            echo ($user['mail']);
             ?></li>
             <li><i class="fas fa-long-arrow-alt-right"></i> <?php
             echo ($data['url_user']);
