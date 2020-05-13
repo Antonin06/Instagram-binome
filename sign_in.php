@@ -1,17 +1,42 @@
 <?php
+session_start();
 
 //connexion à la BDD
 include 'connexion.php';
 
 
+if (isset($_POST['login']))
+{
+  $usernameConnect = htmlspecialchars($_POST['username']);
+  $passwordConnect = $_POST['password'];
+  
+  
+  $sql ="SELECT * FROM users WHERE username =? ";
+  $result = $bdd->prepare($sql);
+  $result->execute([$usernameConnect]);
+  echo 'ok';
+  $user = $result->fetch();
+  
+  
 
+  if($user) {
+   
+    if (password_verify($passwordConnect, $user["password"]))
 
-$insertUserName = $bdd->prepare("SELECT FROM users(username, password)
-VALUES (?, ?)");
+    
+      echo "connexion ok";
+      
+      $_SESSION['username'] = $usernameConnect;
+      header( 'location: profil.php?username='.$_SESSION['username']);
+      
 
+    
 
-
-header( 'location: profil.php');
+  }
+ 
+  
+  
+};
 
 ?>
 
@@ -47,9 +72,16 @@ header( 'location: profil.php');
         <label for="exampleInputPassword1">Password</label>
         <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
       </div>
-      <button type="submit" class="btn btn-success pb-1">Login</button><br/>
+      <button type="submit" name="login" class="btn btn-success pb-1">Login</button><br/>
       <strong>don't have an account? <a href="sign_up.php">Sign up</a></strong>
     </form>
+    <?php if(isset($erreur)){
+      echo '<font color="red">'.$erreur;
+    };
+    
+      
+    
+  ?>
   
 
   </body>

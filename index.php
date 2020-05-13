@@ -42,7 +42,7 @@ $username = $user->fetch();
               <div class="dropdown show">
                 <a class="nav-item nav-link mr-2 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-heart fa-2x"></i></a>
                 <div class="dropdown-menu"  aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">a aimé votre photo<button type="button" class="btn btn-primary">S'abonné</button></a>
+                  <a class="dropdown-item" href="#"><a href="profil.php">Antho06 </a>aime votre photo <button type="button" class="btn btn-primary btn-sm">S'abonné</button></a>
                   <a class="dropdown-item" href="#">a commencé à vous suivre</a>
                   <a class="dropdown-item" href="#">sugsestion d'abonné</a>
                   <a class="dropdown-item" href="#">cool !</a>
