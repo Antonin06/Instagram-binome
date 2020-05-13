@@ -4,8 +4,6 @@ include '../connexion.php';
 
 session_start();
 
-
-
 $username = htmlspecialchars($_POST["username"]);
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $mail = htmlspecialchars ($_POST["mail"]);
@@ -24,6 +22,7 @@ $checkUser = $requete->fetch(PDO::FETCH_ASSOC);
 
 if($checkUser) {
   header( 'location: ../sign_up.php?error=username');
+  exit;
 }
 else {
   $insertNewUser = $bdd->prepare("INSERT INTO users(username, password, mail, lastname, firstname, phone)
@@ -42,19 +41,6 @@ else {
 }
 
 
-
-// $insertNewUser = $bdd->prepare("INSERT INTO users(username, password, mail, lastname, firstname, phone)
-// VALUES (?, ?, ?, ?, ?, ?)");
-//
-// $insertNewUser->execute([
-//     $username,
-//     $password,
-//     $mail,
-//     $lastname,
-//     $firstname,
-//     $phone
-// ]);
-
 $getUser = $bdd->prepare('SELECT * FROM users WHERE mail=? ORDER BY id DESC');
 $getUser->execute([
     $mail
@@ -66,13 +52,6 @@ $_SESSION['user_id'] = $user['id'];
 $_SESSION['username'] = $user['username'];
 
 
-// var_dump($_SESSION['user_id']);
-// die();
-// $test =  $insertNewUsers->fetchAll();
-// var_dump($user["id"]);
-// die();
-
-// $allMessages = $allMessagestatement->fetchAll(PDO::FETCH_ASSOC);
 
 
 

@@ -68,6 +68,6 @@ if(isset($_POST['submit'])){
 // Image CODE
 
 
-header('location: ../profil.php');
+header('location: ../sign_in.php');
 
 ?>

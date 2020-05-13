@@ -1,22 +1,3 @@
-<?php
-
-//connexion à la BDD
-include 'connexion.php';
-
-
-
-
-$insertUserName = $bdd->prepare("SELECT FROM users(username, password)
-VALUES (?, ?)");
-
-
-
-header( 'location: profil.php');
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +11,9 @@ header( 'location: profil.php');
   <title>Instagram</title>
 </head>
   <body>
-  
 
-    
-    <form class="sign_in  shadow mx-auto" action="sign_in.php" method="POST" >
+
+    <form class="sign_in shadow mx-auto" action="./data/sign_in_login.php" method="POST" >
     <img class="sign_in_logo " src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt="">
       <div class="form-group mt-3">
         <div class="input-group flex-nowrap pt-5">
@@ -50,7 +30,7 @@ header( 'location: profil.php');
       <button type="submit" class="btn btn-success pb-1">Login</button><br/>
       <strong>don't have an account? <a href="sign_up.php">Sign up</a></strong>
     </form>
-  
+
 
   </body>
 </html>
