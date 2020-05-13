@@ -1,3 +1,18 @@
+<?php
+
+//connexion à la BDD
+include 'connexion.php';
+
+session_start();
+
+$user_data = $bdd->query("SELECT * FROM user_data ORDER BY user_data.user_id DESC");
+$data = $user_data->fetch();
+
+$user = $bdd->query("SELECT * FROM users ORDER BY users.id DESC");
+$username = $user->fetch();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +50,8 @@
                   <a class="dropdown-item" href="#">autre personne</a>
                 </div>
               </div>
-              <a class="nav-item nav-link mr-2" href="profil.php"><i class="fas fa-user-circle fa-2x"></i></a>
+              <a class="nav-item nav-link mr-2" href="profil.php"><img src="<?php echo ".".($data['img_profil']) ?>" alt="" class="img-profil-navbar" width="35px;" height="35px;"></a>
+              <a class="nav-item nav-link ml-2" href="add_image.php"><i class="fas fa-plus-circle fa-2x"></i></a>
             </div>
           </div>
         </div>

@@ -13,50 +13,80 @@
   <title>Instagram</title>
 </head>
 <body>
-    <form class="sign_up shadow p-3" action="./data/sign_up_register.php" method="POST">
-        <div class="form-row">
-          <div class="col-md-12 mb-3">
-            <label for="validationDefault01">First name</label>
-            <input type="text" name="firstname" class="form-control" id="validationDefault01" placeholder="First name" value="" required>
-          </div>
-          <div class="col-md-12 mb-3">
-            <label for="validationDefault02">Last name</label>
-            <input type="text" name="lastname" class="form-control" id="validationDefault02" placeholder="Last name" value="" required>
-          </div>
-          <div class="col-md-12 mb-3">
-            <label for="validationDefault02">E-mail</label>
-            <input type="text" name="mail" class="form-control" id="validationDefault02" placeholder="email" value="" required>
-          </div>
-          <div class="col-md-12 mb-3">
-            <label for="validationDefaultUsername">username</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white p-2">
+      <div class="container p-1">
+        <a class="navbar-brand" href="index.php">
+          <img src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt=""></a>
+          <img src="./images/designed_by_no_bg.png" width="140" height="68" class="mx-auto" alt="">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container-fluid h-100 ">
+      <div class="container w-25 d-flex justify-content-center mt-5">
+        <div class="card p-4 shadow" style="width: 22rem;">
+          <h3 class="text-center"><span class="badge badge-success">Inscription</span></h3>
+          <p class="text-right"><span class="badge badge-dark">Etape 1 sur 2 </span></p>
+          <form class="sign_up p-3" action="./data/sign_up_register.php" method="POST">
+            <div class="form-row">
+              <div class="col-md-12 mb-3">
+                <label for="validationDefault01">First name</label>
+                <input type="text" name="firstname" class="form-control" id="validationDefault01" placeholder="First name" value="" required>
               </div>
-              <input type="text" name="username" class="form-control" id="validationDefaultUsername" placeholder="username" aria-describedby="inputGroupPrepend2" required>
+              <div class="col-md-12 mb-3">
+                <label for="validationDefault02">Last name</label>
+                <input type="text" name="lastname" class="form-control" id="validationDefault02" placeholder="Last name" value="" required>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="validationDefault02">E-mail</label>
+                <input type="text" name="mail" class="form-control" id="validationDefault02" placeholder="email" value="" required>
+              </div>
+              <div class="col-md-12 mb-3">
+                <?php
+                if(isset($_GET['error']) && $_GET['error'] === 'username'){  ?>
+                  <p class="text-danger text-center"><strong>L'username est deja utilisé!</strong></p>
+                <?php  }
+                ?>
+                <label for="validationDefaultUsername">username</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                  </div>
+                  <input type="text" name="username" class="form-control" id="validationDefaultUsername" placeholder="username" aria-describedby="inputGroupPrepend2" required>
+                </div>
+              </div>
             </div>
-          </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="password" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="validationDefault04">Phone</label>
+                <input type="tel" name="phone" class="form-control" id="validationDefault04" placeholder="phone" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                <label class="form-check-label" for="invalidCheck2">
+                  Agree to terms and conditions
+                </label>
+              </div>
+            </div>
+            <div class="text-center">
+              <a class="btn btn-danger " href="sign_in.php" role="button">Retour</a>
+              <button class="btn btn-success col-md-12 w-50" type="submit">Continuer</button>
+            </div>
+          </form>
         </div>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" name="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="password" required>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="validationDefault04">Phone</label>
-            <input type="tel" name="phone" class="form-control" id="validationDefault04" placeholder="phone" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-            <label class="form-check-label" for="invalidCheck2">
-              Agree to terms and conditions
-            </label>
-          </div>
-        </div>
-        <button class="btn btn-success col-md-12" type="submit">Sign Up</button>
-     </form>
-    
-</body>
-</html>
+      </div>
+    </div>
+
+  </body>
+  </html>

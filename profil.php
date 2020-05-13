@@ -1,3 +1,21 @@
+<?php
+
+//connexion à la BDD
+include 'connexion.php';
+
+session_start();
+
+$user_data = $bdd->query("SELECT * FROM user_data ORDER BY user_data.user_id DESC");
+$data = $user_data->fetch();
+
+$user = $bdd->query("SELECT * FROM users ORDER BY users.id DESC");
+$username = $user->fetch();
+
+$request = $bdd->query("SELECT * FROM images ORDER BY images.created_at DESC");
+$images = $request->fetchAll();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +52,15 @@
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-              </div>  
-              <a class="nav-item nav-link mr-2" href="profil.php"><i class="fas fa-user-circle fa-2x"></i></a>
+              </div>
+              <a class="nav-item nav-link mr-2" href="profil.php"><img src="<?php echo ".".($data['img_profil']) ?>" alt="" class="img-profil-navbar shadow-sm" width="35px;" height="35px;"></a>
+              <a class="nav-item nav-link ml-2" href="add_image.php"><i class="fas fa-plus-circle fa-2x"></i></a>
             </div>
           </div>
         </div>
       </nav>
     </header>
-
+    <a href="sign_up.php">Creer nouveau user</a>
     <div class="container mt-5 pl-5">
       <div class="row">
 
@@ -49,50 +68,60 @@
         </div>
 
         <div class="col-4">
-          <img src="https://via.placeholder.com/200" alt="" class="img-circle">
+          <img src="<?php echo ".".($data['img_profil']) ?>" alt="" class="img-circle" width="200px;" height="200px;">
         </div>
 
         <div class="col-6 pl-5">
-          <h2>UserName</h2>
+          <h2><?php
+          echo ($username['username']);
+          ?></h2>
           <ul class="list-inline">
             <li class="list-inline-item"><strong>59</strong> publications</li>
             <li class="list-inline-item"><strong>5886</strong> abonnés</li>
             <li class="list-inline-item"><strong>530</strong> abonnements</li>
           </ul>
           <ul class="list-unstyled">
-            <li>UserName</li>
-            <li>Type de compte(photos/blog/ect)</li>
-            <li>Description</li>
-            <li>localisation</li>
-            <li>mail</li>
-            <li>lien utile</li>
+            <li><i class="fas fa-pencil-alt"></i> <?php
+            echo ($data['description']);
+            ?></li>
+            <li><i class="fas fa-map-pin"></i> <?php
+            echo ($data['localisation']);
+            ?></li>
+            <li><i class="far fa-envelope"></i> <?php
+            echo ($username['mail']);
+            ?></li>
+            <li><i class="fas fa-long-arrow-alt-right"></i> <?php
+            echo ($data['url_user']);
+            ?></li>
           </ul>
         </div>
       </div>
     </div><br/>
 
+
+
     <hr style="width: 50%; color: black; height: 0.01rem; background-color:grey;" />
 
-    <div class="container mt-5 p-0">
+    <div class="container p-0">
       <div class="row">
-
-        <div class="col-md-4 col-sm-12">
-          <img src="https://via.placeholder.com/350x350" alt="..." class="Responsive image">
-        </div>
-
-        <div class="col-md-4 col-sm-12">
-          <img src="https://via.placeholder.com/350x350" alt="..." class="Responsive image">
-        </div>
-
-        <div class="col-md-4 col-sm-12">
-          <img src="https://via.placeholder.com/350x350" alt="..." class="Responsive image">
-        </div>
-
+        <?php foreach($images as $image){ ?>
+          <div class="col-md-4 col-sm-12 mt-4">
+            <img src="<?php echo ".".($image['img_path']) ?>" alt="..." class="Responsive image" width="350px;" height="350px;">
+          </div>
+        <?php } ?>
+        <!-- <div class="col-md-4 col-sm-12">
+        <img src="https://via.placeholder.com/350x350" alt="..." class="Responsive image">
       </div>
-    </div><br/><br/><br/><br/><br/>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-  </html>
+      <div class="col-md-4 col-sm-12">
+      <img src="https://via.placeholder.com/350x350" alt="..." class="Responsive image">
+    </div> -->
+
+  </div>
+</div><br/><br/><br/><br/><br/>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

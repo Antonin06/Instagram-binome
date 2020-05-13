@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 
   }
   else {
-    header('location: ../sign_up2.php?error=image');
+    header('location: ../sign_up2?error=image.php');
   }
 
   $insertNewUserData = $bdd->prepare("INSERT INTO user_data(description, localisation, url_user, user_id, img_profil)

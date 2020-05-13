@@ -9,11 +9,17 @@ background-color: #EFEFEF;
     transform:translate(-50%,-50%);
     overflow:hidden;
 }
+.img-profil-navbar {
+    border-radius: 50%;
+}
 .bg-bg{
   background-color: #EFEFEF;
 }
 .bg-white{
   background-color: white;
+}
+div h2{
+  text-transform: uppercase;
 }
 /* STORY1 */
 .story1 {
@@ -185,8 +191,3 @@ background-color: #EFEFEF;
     transform:rotate(200deg);
   }
 }
-
-
-
-
-
