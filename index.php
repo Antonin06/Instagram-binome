@@ -16,6 +16,7 @@ $data = $user_data->fetch();
 $request = $bdd->prepare("SELECT * FROM images WHERE user_id = ? ORDER BY images.created_at DESC");
 $request->execute([$user['id']]);
 $images = $request->fetchAll();
+
 ?>
 
 <!DOCTYPE html>

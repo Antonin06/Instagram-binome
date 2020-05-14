@@ -1,3 +1,22 @@
+<?php
+session_start();
+include 'connexion.php';
+
+$userSelect = $bdd->prepare("SELECT * FROM users WHERE username = ?");
+$userSelect->execute([$_SESSION['username']]);
+$user = $userSelect->fetch();
+
+$user_data = $bdd->prepare("SELECT * FROM user_data WHERE user_id = ?");
+$user_data->execute([$user['id']]);
+$data = $user_data->fetch();
+
+$request = $bdd->prepare("SELECT * FROM images WHERE user_id = ? ORDER BY images.created_at DESC");
+$request->execute([$user['id']]);
+$images = $request->fetchAll();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,19 +26,11 @@
   <script src="https://kit.fontawesome.com/a58b6117a4.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/lucas.css">
+  <link rel="stylesheet" href="./css/Antonin.css">
   <title>Instagram</title>
 </head>
 <body>
-  <?php
-  session_start();
-  include 'connexion.php';
 
- 
-
-  // var_dump($_SESSION['username']);
-  // die();
-  ?>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white p-2">
       <div class="container p-1">

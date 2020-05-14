@@ -3,6 +3,17 @@ session_start();
 
 include '../connexion.php';
 
+$userSelect = $bdd->prepare("SELECT * FROM users WHERE username = ?");
+$userSelect->execute([$_SESSION['username']]);
+$user = $userSelect->fetch();
+
+$user_data = $bdd->prepare("SELECT * FROM user_data WHERE user_id = ?");
+$user_data->execute([$user['id']]);
+$data = $user_data->fetch();
+
+$request = $bdd->prepare("SELECT * FROM images WHERE user_id = ? ORDER BY images.created_at DESC");
+$request->execute([$user['id']]);
+$images = $request->fetchAll();
 
 date_default_timezone_set('Europe/Paris');
 $created_at = date('Y-m-d H:i:s');
@@ -45,7 +56,7 @@ if(isset($_POST['submit'])){
   VALUES (?, ?, ?)");
 
   $insertNewUserData->execute([
-    $_SESSION['user_id'],
+    $user['id'],
     $created_at,
     "/upload-profil/".$image['name']
 
