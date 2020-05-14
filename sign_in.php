@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 session_start();
 include  'connexion.php';
@@ -7,7 +5,7 @@ include  'connexion.php';
 ?>
 
 
->>>>>>> 97cbeaed3a69111a4e170069283d24d3d732eaaf
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +18,6 @@ include  'connexion.php';
   <link rel="stylesheet" href="./css/lucas.css">
   <title>Instagram</title>
 </head>
-<<<<<<< HEAD
 <body>
 
   <header>
@@ -35,39 +32,6 @@ include  'connexion.php';
         </div>
       </nav>
     </header>
-
-    <form class="sign_in shadow mx-auto" action="./data/sign_in_login.php" method="POST" >
-      <img class="sign_in_logo " src="./images/instagram_logo.webp" width="140" height="68" class="d-inline-block align-top" alt="">
-      <div class="form-group mt-3">
-        <div class="input-group flex-nowrap pt-5">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="addon-wrapping">@</span>
-          </div>
-          <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
-      </div>
-      <button type="submit" name="login" class="btn btn-success pb-1">Login</button><br/>
-      <strong>don't have an account? <a href="sign_up.php">Sign up</a></strong>
-    </form>
-
-    <?php if(isset($erreur)){
-      echo '<font color="red">'.$erreur;
-    };
-
-
-
-    ?>
-
-
-
-
-=======
-  <body>
-
   <div class="container-fluid h-100 ">
     <div class="container w-25 d-flex justify-content-center mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
@@ -100,7 +64,6 @@ include  'connexion.php';
  
 
   
->>>>>>> 97cbeaed3a69111a4e170069283d24d3d732eaaf
 
   </body>
   </html>
