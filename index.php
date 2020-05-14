@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 //connexion à la BDD
 include 'connexion.php';
 
-session_start();
+
 
 $user_data = $bdd->query("SELECT * FROM user_data ORDER BY user_data.user_id DESC");
 $data = $user_data->fetch();

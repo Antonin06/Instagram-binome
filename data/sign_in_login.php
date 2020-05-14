@@ -1,22 +1,46 @@
 <?php
-
+session_start();
 include '../connexion.php';
 
-$username = htmlspecialchars($_POST["username"]);
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 
-$requete = $bdd->prepare("SELECT * FROM users WHERE username = '$username'");
-$requete->execute([
-  $username,
-]);
 
-$checkUser = $requete->fetch(PDO::FETCH_ASSOC);
+if (isset($_POST['login']))
+{
+  $usernameConnect = htmlspecialchars($_POST['username']);
+  $passwordConnect = $_POST['password'];
+  
+  
+  $sql ="SELECT * FROM users WHERE username =? ";
+  $result = $bdd->prepare($sql);
+  $result->execute([$usernameConnect]);
+  $erreur= 'veuillez vous inscrire';
+  $user = $result->fetch();
+  
+  
 
+  if($user) {
+   
+    if (password_verify($passwordConnect, $user["password"]))
 
-if($checkUser) {
-  header( 'location: ../profil.php');
-}
-else {
-  header( 'location: ../sign_in.php?error=login');
-}
+    
+      echo "connexion ok";
+      
+      $_SESSION['username'] = $usernameConnect;
+      header( 'location: ../index.php?username='.$_SESSION['username']);
+      
+
+    
+
+  }
+  else{
+    echo  '<font color="red"<h1><center>'.$erreur;
+    header('location: ../sign_in.php?error=username');
+  }
+    
+ 
+  
+  
+};
+
+?>

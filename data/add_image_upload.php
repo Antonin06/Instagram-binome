@@ -1,8 +1,8 @@
 <?php
+session_start();
 
 include '../connexion.php';
 
-session_start();
 
 date_default_timezone_set('Europe/Paris');
 $created_at = date('Y-m-d H:i:s');
