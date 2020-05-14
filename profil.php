@@ -59,12 +59,14 @@ $images = $request->fetchAll();
               </div>
               <a class="nav-item nav-link mr-2" href="profil.php"><img src="<?php echo ".".($data['img_profil']) ?>" alt="" class="img-profil-navbar shadow-sm" width="35px;" height="35px;"></a>
               <a class="nav-item nav-link ml-2" href="add_image.php"><i class="fas fa-plus-circle fa-2x"></i></a>
+              <a class="nav-item nav-link ml-2" href="./data/disconnect.php"><i class="fas fa-sign-out-alt fa-2x"></i></a>
             </div>
           </div>
         </div>
       </nav>
     </header>
-    <a href="sign_up.php">Creer nouveau user</a>
+
+    
     <div class="container mt-5 pl-5">
       <div class="row">
 

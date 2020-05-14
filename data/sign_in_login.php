@@ -1,22 +1,41 @@
 <?php
+session_start();
 
+//connexion à la BDD
 include '../connexion.php';
 
-$username = htmlspecialchars($_POST["username"]);
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+if (isset($_POST['login']))
+{
+  $usernameConnect = htmlspecialchars($_POST['username']);
+  $passwordConnect = $_POST['password'];
 
 
-$requete = $bdd->prepare("SELECT * FROM users WHERE username = '$username'");
-$requete->execute([
-  $username,
-]);
+  $sql ="SELECT * FROM users WHERE username =? ";
+  $result = $bdd->prepare($sql);
+  $result->execute([$usernameConnect]);
+  echo 'ok';
+  $user = $result->fetch();
 
-$checkUser = $requete->fetch(PDO::FETCH_ASSOC);
 
 
-if($checkUser) {
-  header( 'location: ../profil.php');
-}
-else {
-  header( 'location: ../sign_in.php?error=login');
-}
+  if($user) {
+
+    if (password_verify($passwordConnect, $user["password"]))
+
+
+      echo "connexion ok";
+
+      $_SESSION['username'] = $usernameConnect;
+      header( 'location: ../profil.php?username='.$_SESSION['username']);
+
+
+
+
+  }
+
+
+
+};
+
+?>

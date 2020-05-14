@@ -5,12 +5,17 @@ include 'connexion.php';
 
 session_start();
 
-$user_data = $bdd->query("SELECT * FROM user_data ORDER BY user_data.user_id DESC");
+$userSelect = $bdd->prepare("SELECT * FROM users WHERE username = ?");
+$userSelect->execute([$_SESSION['username']]);
+$user = $userSelect->fetch();
+
+$user_data = $bdd->prepare("SELECT * FROM user_data WHERE user_id = ?");
+$user_data->execute([$user['id']]);
 $data = $user_data->fetch();
 
-$user = $bdd->query("SELECT * FROM users ORDER BY users.id DESC");
-$username = $user->fetch();
-
+$request = $bdd->prepare("SELECT * FROM images WHERE user_id = ? ORDER BY images.created_at DESC");
+$request->execute([$user['id']]);
+$images = $request->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +57,7 @@ $username = $user->fetch();
               </div>
               <a class="nav-item nav-link mr-2" href="profil.php"><img src="<?php echo ".".($data['img_profil']) ?>" alt="" class="img-profil-navbar" width="35px;" height="35px;"></a>
               <a class="nav-item nav-link ml-2" href="add_image.php"><i class="fas fa-plus-circle fa-2x"></i></a>
+              <a class="nav-item nav-link ml-2" href="./data/disconnect.php"><i class="fas fa-sign-out-alt fa-2x"></i></a>
             </div>
           </div>
         </div>
@@ -142,7 +148,7 @@ $username = $user->fetch();
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>

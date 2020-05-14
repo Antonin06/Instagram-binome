@@ -30,7 +30,7 @@
         <div class="card p-4 shadow" style="width: 22rem;">
           <h3 class="text-center"><span class="badge badge-success">Inscription</span></h3>
           <p class="text-right"><span class="badge badge-dark">Etape 1 sur 2 </span></p>
-          <form class="sign_up p-3" action="./data/sign_up_register.php" method="POST">
+          <form class="p-3" action="./data/sign_up_register.php" method="POST">
             <div class="form-row">
               <div class="col-md-12 mb-3">
                 <label for="validationDefault01">First name</label>
