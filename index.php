@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 //connexion à la BDD
 include 'connexion.php';
 
-session_start();
+
 
 $userSelect = $bdd->prepare("SELECT * FROM users WHERE username = ?");
 $userSelect->execute([$_SESSION['username']]);

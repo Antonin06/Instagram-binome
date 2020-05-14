@@ -12,9 +12,10 @@
 </head>
 <body>
   <?php
+  session_start();
   include 'connexion.php';
 
-  session_start();
+ 
 
   // var_dump($_SESSION['username']);
   // die();

@@ -1,8 +1,7 @@
 <?php
+session_start();
 
 include '../connexion.php';
-
-session_start();
 
 // $getUsers = $bdd->prepare('SELECT * FROM users WHERE id=?');
 // $getUsers->execute([

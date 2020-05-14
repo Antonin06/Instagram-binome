@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 include '../connexion.php';
 
-session_start();
+
 
 $username = htmlspecialchars($_POST["username"]);
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
