@@ -79,6 +79,12 @@ $images = $request->fetchAll();
               <?php  }
               ?>
             </div>
+
+            <div class="form-group mt-4">
+              <label for="description">Description</label>
+              <textarea class="form-control mb-2" rows="2" name="description" placeholder="Faites une breve description de votre photo." required></textarea>
+            </div>
+
             <div class="text-center">
               <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
             </div>

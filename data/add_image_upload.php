@@ -17,6 +17,7 @@ $images = $request->fetchAll();
 
 date_default_timezone_set('Europe/Paris');
 $created_at = date('Y-m-d H:i:s');
+$description = htmlspecialchars($_POST["description"]);
 
 
 if(isset($_POST['submit'])){
@@ -52,11 +53,12 @@ if(isset($_POST['submit'])){
     header('location: ../add_image.php?error=image');
   }
 
-  $insertNewUserData = $bdd->prepare("INSERT INTO images(user_id, created_at, img_path)
-  VALUES (?, ?, ?)");
+  $insertNewUserData = $bdd->prepare("INSERT INTO images(user_id, description, created_at, img_path)
+  VALUES (?, ?, ?, ?)");
 
   $insertNewUserData->execute([
     $user['id'],
+    $description,
     $created_at,
     "/upload-profil/".$image['name']
 

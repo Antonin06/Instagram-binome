@@ -1,5 +1,9 @@
-body, html{
+body{
 background-color: #EFEFEF;
+}
+html{
+  background-color: #EFEFEF;
+  scroll-behavior: smooth;
 }
 .img-circle {
     border-radius: 50%;
